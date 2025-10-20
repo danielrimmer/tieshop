@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Rimmer's | Our Story</title>
+  <link rel="icon" href="images/favicon-logo.svg" type="image/svg+xml">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/style.css?v=20251006-1">
+</head>
+<body class="about2-page">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Thin preheader bar: always visible, header offsets below it -->
+  <div class="preheader preheader--visible" id="preheader" aria-hidden="false">
+    <div class="preheader__inner">
+      <span class="preheader__text">Italian Artisanship in Every Stitch</span>
+    </div>
+  </div>
+
+  <!-- Transparent header for this page -->
+  <header class="about2-header" role="banner">
+    <div class="logo-wrap">
+      <a href="index.html" style="color: inherit; text-decoration: none;">rimmer's</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="about2-hero">
+      <!-- Left Panel: Navy -->
+      <div class="panel panel--left">
+        <div>
+          <div class="panel-meta">
+            <span>EST. 2024</span>
+            <span>COMO, IT</span>
+          </div>
+          <div class="panel-icon">◆</div>
+          <h1 class="panel-title">The<br>Art of the Tie</h1>
+          <p class="panel-sub">Unwavering artisanship in every stitch.</p>
+          <p class="panel-blurb">
+            A Rimmer's tie is not merely an accessory; it is the quiet anchor of a well-considered wardrobe.
+          </p>
+        </div>
+        <div>
+          <div class="panel-mark"></div>
+          <div class="panel-footer">
+            Handcrafted in Italy
+          </div>
+        </div>
+      </div>
+
+      <!-- Middle Panel: Cream -->
+      <div class="panel panel--middle">
+        <div class="crest-rule">
+          <span class="crest">R</span>
+          <div class="rule"></div>
+        </div>
+        <h2 class="ed-title">A Heritage of Precision</h2>
+        <p class="ed-copy">
+          Our story begins not in a boardroom, but at a cutting table in the heart of Como, where the world's finest silk is woven into existence. For generations, this region has been the global epicenter of silk craftsmanship. It is this legacy we honor with every fold, stitch, and press.
+        </p>
+        <p class="ed-copy">
+          We believe in patience, precision, and the profound beauty of an object made by hand. Our ties are not mass-produced; they are brought to life by artisans who have dedicated their lives to this singular craft.
+        </p>
+
+        <div class="pullout">
+          <div class="pullout-rule"></div>
+          <h3 class="pullout-title">The Seven-Fold</h3>
+          <p class="pullout-copy">
+            The pinnacle of neckwear, our seven-fold ties are constructed from a single, generous piece of silk, folded seven times to create a tie of unmatched body and drape, requiring no liner.
+          </p>
+          <p class="pullout-foot">A TESTAMENT TO TRADITION</p>
+        </div>
+      </div>
+
+      <!-- Right Panel: Cream with Photo -->
+      <div class="panel panel--right">
+        <div class="photo-frame">
+          <div class="image-slot" aria-label="Craftsman at work">
+            Image Placeholder
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Ensure the header offsets by the actual preheader height
+    (function(){
+      var pre = document.getElementById('preheader');
+      if(!pre) return;
+      function setOffset(){
+        try {
+          var h = pre.getBoundingClientRect().height || 0;
+          document.documentElement.style.setProperty('--preheader-height', h + 'px');
+        } catch(e) {}
+      }
+      window.addEventListener('load', setOffset, {passive:true});
+      window.addEventListener('resize', setOffset, {passive:true});
+      setOffset();
+    })();
+  </script>
+</body>
+</html>

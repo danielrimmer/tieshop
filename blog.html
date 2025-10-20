@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal | Rimmer's</title>
+  <link rel="icon" href="images/favicon-logo.svg" type="image/svg+xml">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/style.css?v=20251006-blog">
+</head>
+<body class="blog-page">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Mobile drawer (consistent with other pages) -->
+  <div id="menu-drawer" class="menu-drawer" aria-hidden="true">
+    <button class="close-drawer" aria-label="Close menu">&times;</button>
+    <nav class="drawer-nav" role="navigation" aria-label="Main menu">
+      <a href="index.html" role="menuitem">Home</a>
+      <a href="contact.html" role="menuitem">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Preheader: always visible -->
+  <div class="preheader preheader--visible" id="preheader">
+    <div class="preheader__inner">
+      <span class="preheader__text">Italian Artisanship in Every Stitch</span>
+    </div>
+  </div>
+
+  <!-- Standard header with centered logo -->
+  <header class="shrunk" id="site-header" role="banner">
+    <div class="header-flex">
+      <div class="header-left">
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu-drawer">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+      <div class="header-center">
+        <a href="index.html"><img src="images/logo.svg" alt="Rimmer's Logo" class="logo"></a>
+      </div>
+      <div class="header-right"></div>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <!-- Hero: centered title and description; deep navy background provides the 60% proportion -->
+    <section class="blog-hero" aria-labelledby="blog-title">
+      <div class="hero-inner">
+        <h1 id="blog-title">Journal</h1>
+        <p class="hero-lead">Quiet reflections on materials, craft and considered design — a calm space for thoughtful reading.</p>
+      </div>
+    </section>
+
+    <!-- Posts grid: 2 columns desktop, 1 column mobile. Ivory cards against navy field -->
+    <section class="blog-list" aria-label="Latest posts">
+      <div class="posts">
+        <!-- Post 1 -->
+        <article class="post-card">
+          <a href="#" class="post-link" aria-label="Read more about Como silk density">
+            <figure class="post-media" aria-hidden="true">
+              <div class="ph">Image Placeholder</div>
+            </figure>
+            <div class="post-body">
+              <h2 class="post-title">On the Density of Como Silk</h2>
+              <p class="post-excerpt">Why fiber length and warp density shape the way a tie drapes, ages, and holds a knot through years of wear.</p>
+              <span class="post-more">Read more</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="post-card">
+          <a href="#" class="post-link" aria-label="Read more about slip-stitching by hand">
+            <figure class="post-media" aria-hidden="true">
+              <div class="ph">Image Placeholder</div>
+            </figure>
+            <div class="post-body">
+              <h2 class="post-title">The Patience of a Slip Stitch</h2>
+              <p class="post-excerpt">A closer look at the floating thread that allows a tie to recover after every wear — subtle, essential, enduring.</p>
+              <span class="post-more">Read more</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="post-card">
+          <a href="#" class="post-link" aria-label="Read more about interlinings">
+            <figure class="post-media" aria-hidden="true">
+              <div class="ph">Image Placeholder</div>
+            </figure>
+            <div class="post-body">
+              <h2 class="post-title">Choosing the Right Interlining</h2>
+              <p class="post-excerpt">Balancing structure and life: how interlinings influence the hand, knot and longevity of a tie.</p>
+              <span class="post-more">Read more</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="post-card">
+          <a href="#" class="post-link" aria-label="Read more about finishing">
+            <figure class="post-media" aria-hidden="true">
+              <div class="ph">Image Placeholder</div>
+            </figure>
+            <div class="post-body">
+              <h2 class="post-title">Pressed, Not Flattened</h2>
+              <p class="post-excerpt">Why gentle finishing preserves volume and character, keeping the tie lively rather than board‑stiff.</p>
+              <span class="post-more">Read more</span>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Drawer toggle
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var drawer = document.getElementById('menu-drawer');
+      if (!toggle || !drawer) return;
+      var closeBtn = drawer.querySelector('.close-drawer');
+      toggle.addEventListener('click', function(e){ e.preventDefault(); drawer.classList.add('open'); drawer.removeAttribute('aria-hidden'); });
+      closeBtn.addEventListener('click', function(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); });
+      drawer.addEventListener('click', function(e){ if (e.target === drawer) { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); } });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); } });
+    })();
+
+    // Compute preheader height for proper header offset
+    (function(){
+      var pre = document.getElementById('preheader');
+      if (!pre) return;
+      function setOffset(){
+        try { document.documentElement.style.setProperty('--preheader-height', (pre.getBoundingClientRect().height||0) + 'px'); } catch(e){}
+      }
+      window.addEventListener('load', setOffset, {passive:true});
+      window.addEventListener('resize', setOffset, {passive:true});
+      setOffset();
+    })();
+  </script>
+</body>
+</html>
+

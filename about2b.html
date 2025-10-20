@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Rimmer's (Concept B)</title>
+  <link rel="icon" href="images/favicon-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css?v=20251006-b">
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body class="about2b-page">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Drawer menu overlay (consistent with other pages) -->
+  <div id="menu-drawer" class="menu-drawer" aria-hidden="true">
+    <button class="close-drawer" aria-label="Close menu">&times;</button>
+    <nav class="drawer-nav" role="navigation" aria-label="Main menu">
+      <a href="index.html" role="menuitem">Home</a>
+      <a href="contact.html" role="menuitem">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Thin preheader bar -->
+  <div class="preheader preheader--visible" id="preheader">
+    <div class="preheader__inner">
+      <span class="preheader__text">Italian Artisanship in Every Stitch</span>
+    </div>
+  </div>
+
+  <!-- Standard header with centered logo -->
+  <header class="shrunk" id="site-header" role="banner">
+    <div class="header-flex">
+      <div class="header-left">
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu-drawer">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+      <div class="header-center">
+        <a href="index.html"><img src="images/logo.svg" alt="Rimmer's Logo" class="logo"></a>
+      </div>
+      <div class="header-right"></div>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <!-- Hero inspired by your reference: navy bands + image -->
+    <section class="about2b-hero" aria-label="Hero">
+      <div class="slab slab--top">
+        <div class="slab-inner">
+          <img src="images/favicon-logo.svg" alt="" class="crest" aria-hidden="true">
+          <div class="slab-meta">SINCE MCMXLV • HANDMADE IN ITALY</div>
+          <h1 class="slab-title">Excellence in Every Detail</h1>
+        </div>
+      </div>
+      <figure class="hero-image" aria-label="Drop your hero image here">
+        <div class="image-slot">Hero Image Placeholder</div>
+      </figure>
+      <div class="slab slab--bottom">
+        <div class="slab-inner">
+          <div class="slab-kicker">The Atelier</div>
+          <p class="slab-copy">Traditional techniques, thoughtful materials, and obsessive finishing define our work. Each tie is stitched by hand to ensure a timeless drape and character.</p>
+          <a class="btn-outline" href="contact.html">Arrange a Visit</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Centered story block with crest and editorial copy -->
+    <section class="about2b-story">
+      <div class="container">
+        <img src="images/favicon-logo.svg" alt="" class="crest" aria-hidden="true">
+        <h2>Our Founding Values</h2>
+        <p>We partner with family-run mills in Como and independent ateliers across Italy. Our philosophy is simple: design with restraint, manufacture with integrity, and finish with care. This commitment guides every decision from yarn selection to final pressing.</p>
+      </div>
+    </section>
+
+    <!-- Alternating content blocks with image placeholders -->
+    <section class="about2b-blocks">
+      <div class="container block grid">
+        <div class="copy">
+          <h3>Materials</h3>
+          <p>We work with long-fiber silks woven for density and clarity. Interlinings are chosen for shape retention, ensuring a graceful knot and confident recovery throughout the day.</p>
+        </div>
+        <div class="media">
+          <div class="image-ph" aria-label="Materials image placeholder">Image Placeholder</div>
+        </div>
+      </div>
+
+      <div class="container block grid reverse">
+        <div class="copy">
+          <h3>Craft</h3>
+          <p>From cutting to slip-stitching, each step reflects generations of practiced skill. Hand-rolled edges and balanced tipping lend a subtle, unmistakable refinement.</p>
+        </div>
+        <div class="media">
+          <div class="image-ph image-tall" aria-label="Craft image placeholder">Image Placeholder</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about2b-cta">
+      <div class="container">
+        <div class="card">
+          <h3>Visit Our Studio</h3>
+          <p>Experience the collection in person and discuss your preferences. We welcome appointments and thoughtful conversation.</p>
+          <a class="btn-outline" href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Drawer toggle, reusing the same pattern as other pages
+    (function(){
+      var toggle = document.querySelector('.menu-toggle');
+      var drawer = document.getElementById('menu-drawer');
+      if (!toggle || !drawer) return;
+      var closeBtn = drawer.querySelector('.close-drawer');
+      toggle.addEventListener('click', function(e){ e.preventDefault(); drawer.classList.add('open'); drawer.removeAttribute('aria-hidden'); });
+      closeBtn.addEventListener('click', function(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); });
+      drawer.addEventListener('click', function(e){ if (e.target === drawer) { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); } });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); } });
+    })();
+  </script>
+</body>
+</html>
+
