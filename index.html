@@ -307,61 +307,44 @@
   </script>
 
   <script>
-  // Optimize images: Add lazy loading and WebP picture elements
+  // Optimize images: Add lazy loading attribute to all index images
   (function(){
     function optimizeImages(){
-      var cards = document.querySelectorAll('#tie-collection .tie-card .card-media');
-      cards.forEach(function(media){
-        var primaryImg = media.querySelector('img.primary') || media.querySelector('img:not(.secondary)');
-        if (!primaryImg) return;
+      try {
+        // Add lazy loading to all primary index images
+        var primaryImgs = document.querySelectorAll('#tie-collection .card-media img.primary[src*="-index."]');
+        primaryImgs.forEach(function(img){
+          if (!img.getAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+          }
+          // Only wrap in picture element if JPG and not already wrapped
+          var src = img.getAttribute('src');
+          if (src && src.endsWith('.jpg') && img.parentNode.tagName !== 'PICTURE') {
+            var webpSrc = src.replace(/\.jpg$/, '.webp');
+            var picture = document.createElement('picture');
+            var source = document.createElement('source');
+            source.setAttribute('srcset', webpSrc);
+            source.setAttribute('type', 'image/webp');
+            picture.appendChild(source);
+            img.parentNode.insertBefore(picture, img);
+            picture.appendChild(img);
+          }
+        });
 
-        var src = primaryImg.getAttribute('src');
-        if (!src || src.indexOf('-index.') === -1) return;
-
-        // Check if already optimized
-        if (media.querySelector('picture')) return;
-
-        // Add lazy loading if not present
-        if (!primaryImg.getAttribute('loading')) {
-          primaryImg.setAttribute('loading', 'lazy');
-        }
-
-        // Try to create picture element with WebP
-        var webpSrc = src.replace(/\.jpg$/, '.webp');
-        var picture = document.createElement('picture');
-        var source = document.createElement('source');
-        source.setAttribute('srcset', webpSrc);
-        source.setAttribute('type', 'image/webp');
-
-        // Clone the img and add to picture
-        var imgClone = primaryImg.cloneNode(true);
-        imgClone.setAttribute('loading', 'lazy');
-        imgClone.setAttribute('src', src);
-        imgClone.removeAttribute('class'); // Remove any classes from clone
-        if (primaryImg.className) {
-          Array.from(primaryImg.classList).forEach(function(c){ if(c !== 'primary') imgClone.classList.add(c); });
-        }
-
-        picture.appendChild(source);
-        picture.appendChild(imgClone);
-        primaryImg.parentNode.replaceChild(picture, primaryImg);
-      });
-
-      // Add lazy loading to all secondary/closeup images
-      var secondaryImgs = document.querySelectorAll('#tie-collection .card-media img.secondary');
-      secondaryImgs.forEach(function(img){
-        if (!img.getAttribute('loading')) {
-          img.setAttribute('loading', 'lazy');
-        }
-      });
+        // Add lazy loading to all secondary images
+        var secondaryImgs = document.querySelectorAll('#tie-collection .card-media img.secondary');
+        secondaryImgs.forEach(function(img){
+          if (!img.getAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+          }
+        });
+      } catch (e) {
+        console.error('Image optimization error:', e);
+      }
     }
 
-    // Run after DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', optimizeImages);
-    } else {
-      optimizeImages();
-    }
+    // Run immediately when script loads
+    optimizeImages();
   })();
   </script>
 
@@ -772,8 +755,8 @@
       <div class="tie-card">
   <a href="tie.html?id=29">
         <div class="card-media">
-          <img src="images/satin-silk-blue-lines-index.jpg" alt="R29 BLUE LINES - SATIN SILK" class="primary">
-          <img src="images/satin-silk-blue-lines-closeup-index.jpg" alt="" aria-hidden="true" class="secondary">
+          <img src="images/satin-silk-blue-lines-index.jpg" alt="R29 BLUE LINES - SATIN SILK" class="primary" loading="lazy">
+          <img src="images/satin-silk-blue-lines-closeup-index.jpg" alt="" aria-hidden="true" class="secondary" loading="lazy">
         </div>
   <h2><span class="title-text">Red and Blue Lines Tie - Satin Silk</span></h2>
       </a>
